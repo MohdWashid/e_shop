@@ -18,7 +18,7 @@ class AppRoutes {
       //after login
       case ProductListScreen.route:
         return MaterialPageRoute(
-            settings: settings, builder: (_) => ProductListScreen());
+            settings: settings, builder: (_) => const ProductListScreen());
     }
     return null;
   };

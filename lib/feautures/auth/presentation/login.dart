@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget {
             if (state is AuthSuccess) {
               QuickHelp.showToast(context,
                   type: ToastType.success, title: 'Login Successfull!');
-              Navigator.pushNamed(context, ProductListScreen.route);
+              Navigator.pushReplacementNamed(context, ProductListScreen.route);
             } else if (state is AuthFailure) {
               QuickHelp.showToast(context,
                   type: ToastType.error, title: 'Login faoled!');
@@ -71,11 +71,7 @@ class LoginScreen extends StatelessWidget {
                           style: AppTextStyle.f14PoopinsBlackW400),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignupScreen()),
-                          );
+                          Navigator.pushNamed(context, SignupScreen.route);
                         },
                         child: Text('Signup',
                             style: AppTextStyle.f16PoopinskDarkBlueW700),

@@ -63,8 +63,7 @@ class MyApp extends StatelessWidget {
                 ),
                 themeMode: ThemeMode.system,
                 onGenerateRoute: AppRoutes.onGenerateRoute,
-                initialRoute: QuickHelp.getInitialRoute(),
-                home: SignupScreen(),
+                initialRoute: QuickHelp.getInitialRoute()
               ),
             );
           },

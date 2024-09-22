@@ -1,9 +1,14 @@
+import 'package:e_shop/components/primary_button.dart';
 import 'package:e_shop/constants/appcolors.dart';
 import 'package:e_shop/constants/apptextstyle.dart';
+import 'package:e_shop/core/enum.dart';
+import 'package:e_shop/feautures/auth/presentation/login.dart';
+import 'package:e_shop/feautures/auth/presentation/signup.dart';
 import 'package:e_shop/feautures/home/bloc/product_cubit.dart';
 import 'package:e_shop/feautures/home/bloc/state.dart';
 import 'package:e_shop/feautures/home/presenation/widgets/product_view.dart';
 import 'package:e_shop/helper/quickhelp.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,9 +51,25 @@ class _ProductListScreenState extends State<ProductListScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: AppColors.kDarkBlue,
-        title: Text(
-          'e-shop',
-          style: AppTextStyle.f14PoopinsWhiteW700,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'e-shop',
+              style: AppTextStyle.f14PoopinsWhiteW700,
+            ),
+            PrimaryButton(
+              width: 100,
+              height: 30,
+              btnColor: AppColors.kMediumGrey,
+                label: 'logout',
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  QuickHelp.showToast(context,
+                      type: ToastType.success, title: 'Logout');
+                  Navigator.pushReplacementNamed(context, LoginScreen.route);
+                }),
+          ],
         ),
       ),
       body: BlocBuilder<ProductCubit, ProductState>(

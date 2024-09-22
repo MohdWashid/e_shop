@@ -88,7 +88,11 @@ class SignupScreen extends StatelessWidget {
                               .read<AuthCubit>()
                               .signUp(name, email, password);
 
-                          Navigator.pushNamed(context,ProductListScreen.route );
+                          QuickHelp.showToast(context,
+                              type: ToastType.success,
+                              title: 'Login Successfull!');
+                          Navigator.pushReplacementNamed(
+                              context, ProductListScreen.route);
                         }
                       },
                     ),
@@ -102,11 +106,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginScreen()),
-                          );
+                          Navigator.pushNamed(context, LoginScreen.route);
                         },
                         child: Text(
                           'Login',
